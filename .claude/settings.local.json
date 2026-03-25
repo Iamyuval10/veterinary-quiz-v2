@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/מולטימדיה מרום/Documents/פרויקטים מפל/**)",
+      "Bash(cd:*)",
+      "Bash(npm run:*)",
+      "Bash(npm start:*)"
+    ]
+  }
+}
