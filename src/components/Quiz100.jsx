@@ -151,7 +151,7 @@ export default function Quiz100() {
 
   // ── Lock body scroll on confidentiality screen ────────────────────────────
   useEffect(() => {
-    if (screen === 'confidentiality') {
+    if (screen === 'confidentiality' || screen === 'pre-results') {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -264,7 +264,8 @@ export default function Quiz100() {
       } else {
         console.log("SCORM not available");
       }
-      setScreen('results');
+      const showPreResults = score === 100 || hasRetried;
+      setScreen(showPreResults ? 'pre-results' : 'results');
     } else {
       setCurrentIndex((i) => i + 1);
       setSelectedOption(null);
@@ -576,6 +577,28 @@ export default function Quiz100() {
                 )}
               </>
             )}
+          </div>
+        )}
+
+        {/* ── PRE-RESULTS POPUP ── */}
+        {screen === 'pre-results' && (
+          <div key="pre-results" className="screen screen--overlay anim-fade-scale">
+            <div className="confidentiality__card">
+              <div className="confidentiality__lock-wrap">
+                <div className="confidentiality__lock-circle">📸</div>
+              </div>
+              <h2 className="confidentiality__title">שימו לב</h2>
+              <div className="confidentiality__rules-card">
+                <p style={{ margin: 0, lineHeight: 1.7, textAlign: 'right', direction: 'rtl', fontSize: '15px' }}>
+                  בעמוד הבא יוצג ציונך הסופי.
+                  <br />
+                  עמוד זה בלבד נדרש לצילום מסך והעברה לגורם הרלוונטי.
+                </p>
+              </div>
+              <button className="btn btn--green btn--full" onClick={() => setScreen('results')}>
+                אני מאשר ומעביר לעמוד הציון ←
+              </button>
+            </div>
           </div>
         )}
 
