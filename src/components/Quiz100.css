@@ -73,10 +73,8 @@
 
 /* ── Scroll container (single scrollable element in the app) ────────────── */
 .scroll-container {
-  height: 100vh;
-  overflow-y: auto;
+  min-height: 100vh;
   overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
 }
 
 /* ── App shell / centering ──────────────────────────────────────────────── */
@@ -335,8 +333,7 @@
 /* ────────────────────────────────────────────────────────────────────────── */
 .screen--quiz {
   padding-top: 24px;
-  padding-bottom: 60px;
-  min-height: 110vh;
+  padding-bottom: 80px;
 }
 
 .quiz__header {
