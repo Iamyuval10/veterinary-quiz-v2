@@ -660,6 +660,22 @@
   text-align: right;
 }
 
+.explanation-box__divider {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 0;
+}
+
+.explanation-box__note {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111;
+  line-height: 1.65;
+  text-align: right;
+  direction: rtl;
+  margin: 0;
+}
+
 /* ────────────────────────────────────────────────────────────────────────── */
 /*  RESULTS SCREEN                                                            */
 /* ────────────────────────────────────────────────────────────────────────── */

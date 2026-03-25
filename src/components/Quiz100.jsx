@@ -17,7 +17,7 @@ const QUESTIONS = [
       E: 'כל התשובות נכונות',
     },
     correct: 'B',
-    explanation: '',
+    explanation: 'כלבים מקררים את עצמם דרך הנשימה — כל דבר שמגביל את הנשימה או מעלה את הטמפרטורה הסביבתית מסכן אותם.',
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ const QUESTIONS = [
       D: 'פינוי, לקיחת מדדים, פתיחת וריד',
     },
     correct: 'C',
-    explanation: '',
+    explanation: 'בכל מצב חירום — קודם עוצרים את הגורם לבעיה, אחר כך מעריכים את המצב ומטפלים, ורק אז פונים לטיפול מקצועי.',
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ const QUESTIONS = [
       D: 'נמק כתוצאה ממגע עם זחל התהלוכן',
     },
     correct: 'D',
-    explanation: '',
+    explanation: 'זחל התהלוכן הוא גורם מסוכן שיכול לגרום לנזק קשה לרקמות בעת מגע, במיוחד באזור הפה.',
   },
   {
     id: 4,
@@ -58,7 +58,7 @@ const QUESTIONS = [
       G: 'כל התשובות נכונות',
     },
     correct: 'F',
-    explanation: '',
+    explanation: 'אירוע חום לא תלוי רק בטמפרטורה — הוא מושפע גם מאיך האימון מנוהל וגם ממצב הכלב עצמו.',
   },
   {
     id: 5,
@@ -70,7 +70,7 @@ const QUESTIONS = [
       D: 'פינוי בהקדם גם על חשבון פתיחת וריד',
     },
     correct: 'C',
-    explanation: '',
+    explanation: 'במצבי חירום — פינוי מהיר עדיף על איסוף מידע. כל עיכוב עלול להחמיר את המצב.',
   },
 ];
 
@@ -148,6 +148,16 @@ export default function Quiz100() {
     () => currentQuestion ? shuffle(Object.entries(currentQuestion.options)) : [],
     [currentQuestion]
   );
+
+  // ── Lock body scroll on confidentiality screen ────────────────────────────
+  useEffect(() => {
+    if (screen === 'confidentiality') {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [screen]);
 
   // ── Scroll to top ─────────────────────────────────────────────────────────
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
@@ -553,7 +563,12 @@ export default function Quiz100() {
                 {answerState !== null && (
                   <div className={explanationBoxClass}>
                     <span className="explanation-box__badge">{explanationBadge}</span>
-                    <p className="explanation-box__text">{currentQuestion.explanation}</p>
+                    {currentQuestion.explanation && (
+                      <>
+                        <hr className="explanation-box__divider" />
+                        <p className="explanation-box__note">{currentQuestion.explanation}</p>
+                      </>
+                    )}
                     <button className="btn btn--green btn--full" onClick={handleNext}>
                       {isLastQuestion ? 'סיים בוחן ←' : `← המשך לשאלה ${currentIndex + 2}`}
                     </button>
