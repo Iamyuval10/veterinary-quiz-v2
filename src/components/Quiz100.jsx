@@ -589,7 +589,7 @@ export default function Quiz100() {
                 <p style={{ margin: 0, lineHeight: 1.7, textAlign: 'right', direction: 'rtl', fontSize: '15px' }}>
                   בעמוד הבא יוצג ציונך הסופי.
                   <br />
-                  עמוד זה בלבד נדרש לצילום מסך והעברה לגורם הרלוונטי.
+                  בעמוד זה בלבד נדרש לצלם מסך ולהעביר לגורם הרלוונטי.
                 </p>
               </div>
               <button className="btn btn--green btn--full" onClick={() => setScreen('results')}>
