@@ -6,6 +6,7 @@ import dogResultsImg from '../assets/result-message.png';
 const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyrgEEb4ouogTLLyHYHlgkjmBTwAnzF9fUoZj83ffovE5vejWnCxM_iIFouYECEt6D_/exec';
 
 async function sendToSheets(payload) {
+  console.log("Trying to send to URL:", SHEETS_URL);
   try {
     await fetch(SHEETS_URL, {
       method: 'POST',
