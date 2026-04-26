@@ -11,7 +11,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "prebuild": "rimraf build"
   },
   "browserslist": {
     "production": [
@@ -26,6 +27,7 @@
     ]
   },
   "devDependencies": {
-    "jimp": "^1.6.0"
+    "jimp": "^1.6.0",
+    "rimraf": "^6.1.3"
   }
 }

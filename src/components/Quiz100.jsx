@@ -44,7 +44,7 @@ const IconX = () => (
 );
 
 // ─── Main Component ───────────────────────────────────────────────────────────
-export default function Quiz100({ questions: QUESTIONS }) {
+export default function Quiz100({ questions: QUESTIONS, quizTitle = 'בוחן הכשרה' }) {
   // Screen state
   const [screen, setScreen] = useState('intro');
   const [agreedConfidentiality, setAgreedConfidentiality] = useState(false);
@@ -312,7 +312,10 @@ export default function Quiz100({ questions: QUESTIONS }) {
         {screen === 'intro' && (
           <div key="intro" className="screen screen--intro anim-fade-up" style={{ paddingTop: '10vh' }}>
             <div className="intro__dog-wrap">
-              <img src={dogIntroImg} alt="בוחן זיהומים" className="intro__dog-img" />
+              <div className="intro__image-container">
+                <img src={dogIntroImg} alt={quizTitle} className="intro__dog-img" />
+                <span className="intro__title-overlay">{quizTitle}</span>
+              </div>
             </div>
             <div className="intro__stats">
               <div className="intro__stat">

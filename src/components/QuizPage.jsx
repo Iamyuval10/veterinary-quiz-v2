@@ -3,6 +3,19 @@ import { useParams } from 'react-router-dom';
 import Quiz100 from './Quiz100';
 import quizData from '../data/quizData';
 
+const QUIZ_TITLES = {
+  'heat-load':           'עומס חום',
+  'intro':               'מבוא לוטרינריה',
+  'physical-exam':       'בדיקה גופנית',
+  'first-aid':           'עזרה ראשונה',
+  'gdv':                 'היפוך קיבה',
+  'poisoning':           'הרעלות',
+  'fitness':             'כושר גופני',
+  'infectious-diseases': 'מחלות זיהומיות',
+  'reproductive-system': 'מערכת הרבייה',
+  'spirocerca':          'ספירוצרקה',
+};
+
 export default function QuizPage() {
   const { quizId } = useParams();
   const questions = quizData[quizId];
@@ -16,5 +29,7 @@ export default function QuizPage() {
     );
   }
 
-  return <Quiz100 questions={questions} />;
+  const quizTitle = QUIZ_TITLES[quizId] ?? 'בוחן הכשרה';
+
+  return <Quiz100 questions={questions} quizTitle={quizTitle} />;
 }

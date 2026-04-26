@@ -110,17 +110,44 @@
   padding-bottom: 28px;
 }
 
-/* Dog + title image (opening.png contains both as one combined image) */
+/* Dog image + title overlay */
 .intro__dog-wrap {
   display: flex;
   justify-content: center;
 }
 
-.intro__dog-img {
+.intro__image-container {
+  position: relative;
   width: 65%;
   max-width: 245px;
+}
+
+.intro__dog-img {
+  width: 100%;
   height: auto;
+  display: block;
   object-fit: contain;
+}
+
+/* Positioned over the pink pill at the bottom of opening.png */
+.intro__title-overlay {
+    position: absolute;
+    bottom: 11%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 56%;
+    text-align: center;
+    font-family: 'Heebo', sans-serif;
+    font-size: clamp(9px, 3.2vw, px);
+    font-weight: 1500px;
+    color: #ffffff;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    pointer-events: none;
+    font-size: x-large;
+    font-weight: 600;
 }
 
 /* Stats row — 3 equal cards */
