@@ -131,23 +131,23 @@
 
 /* Positioned over the pink pill at the bottom of opening.png */
 .intro__title-overlay {
-    position: absolute;
-    bottom: 11%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 56%;
-    text-align: center;
-    font-family: 'Heebo', sans-serif;
-    font-size: clamp(9px, 3.2vw, px);
+bottom: 12%;
+    color: #fff;
+    font-family: Heebo, sans-serif;
+    font-size: clamp(9px,3.2vw,px);
+    font-size: large;
     font-weight: 1500px;
-    color: #ffffff;
-    line-height: 1.2;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    pointer-events: none;
-    font-size: x-large;
     font-weight: 600;
+    left: 50%;
+    line-height: 1.2;
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+    text-align: center;
+    text-overflow: ellipsis;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    width: 56%;
 }
 
 /* Stats row — 3 equal cards */
