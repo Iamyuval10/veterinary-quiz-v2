@@ -3,6 +3,19 @@ import './Quiz100.css';
 import dogIntroImg from '../assets/opening.png';
 import dogResultsImg from '../assets/result-message.png';
 
+const SHEETS_URL = 'https://docs.google.com/spreadsheets/d/1tbZuBmteeOfR2kzyzpAl7knFjbMOd3tDNKayu9n44-U/edit?usp=sharing';
+
+async function sendToSheets(payload) {
+  try {
+    await fetch(SHEETS_URL, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    });
+  } catch (err) {
+    console.warn('שליחה ל-Sheets נכשלה:', err);
+  }
+}
+
 const shuffle = (arr) => {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -179,6 +192,15 @@ export default function Quiz100({ questions: QUESTIONS, quizTitle = 'בוחן ה
       const merged = { ...allAnswers, ...currentAttemptAnswers };
       setAllAnswers(merged);
       const score = calcScore(merged);
+
+      // שליחה ל-Google Sheets — רצה תמיד, ללא קשר ל-SCORM
+      sendToSheets({
+        score,
+        total: QUESTIONS.length,
+        quizTitle,
+        date: new Date().toISOString(),
+      });
+
       if (typeof window.pipwerks !== "undefined" && pipwerks.SCORM.connection.isActive) {
         const is2004 = pipwerks.SCORM.version === "2004";
         pipwerks.SCORM.score.set(score);
@@ -190,8 +212,6 @@ export default function Quiz100({ questions: QUESTIONS, quizTitle = 'בוחן ה
         }
         pipwerks.SCORM.save();
         pipwerks.SCORM.quit();
-      } else {
-        console.log("SCORM not available");
       }
       const showPreResults = score === 100 || hasRetried;
       setScreen(showPreResults ? 'pre-results' : 'results');
