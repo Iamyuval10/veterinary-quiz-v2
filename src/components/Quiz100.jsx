@@ -3,7 +3,7 @@ import './Quiz100.css';
 import dogIntroImg from '../assets/opening.png';
 import dogResultsImg from '../assets/result-message.png';
 
-const SHEETS_URL = 'https://docs.google.com/spreadsheets/d/1tbZuBmteeOfR2kzyzpAl7knFjbMOd3tDNKayu9n44-U/edit?usp=sharing';
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyrgEEb4ouogTLLyHYHlgkjmBTwAnzF9fUoZj83ffovE5vejWnCxM_iIFouYECEt6D_/exec';
 
 async function sendToSheets(payload) {
   try {
@@ -64,6 +64,7 @@ export default function Quiz100({ questions: QUESTIONS, quizTitle = 'בוחן ה
 
   // Quiz progress
   const [hasRetried, setHasRetried] = useState(false);
+  const hasSubmitted = useRef(false);
   const [firstAttemptScore, setFirstAttemptScore] = useState(null);
   const [activeQuestions, setActiveQuestions] = useState([...QUESTIONS]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -193,13 +194,15 @@ export default function Quiz100({ questions: QUESTIONS, quizTitle = 'בוחן ה
       setAllAnswers(merged);
       const score = calcScore(merged);
 
-      // שליחה ל-Google Sheets — רצה תמיד, ללא קשר ל-SCORM
-      sendToSheets({
-        score,
-        total: QUESTIONS.length,
-        quizTitle,
-        date: new Date().toISOString(),
-      });
+      if (!hasSubmitted.current) {
+        hasSubmitted.current = true;
+        sendToSheets({
+          score,
+          total: QUESTIONS.length,
+          quizTitle,
+          date: new Date().toISOString(),
+        });
+      }
 
       if (typeof window.pipwerks !== "undefined" && pipwerks.SCORM.connection.isActive) {
         const is2004 = pipwerks.SCORM.version === "2004";
