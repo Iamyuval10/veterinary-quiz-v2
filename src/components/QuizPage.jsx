@@ -5,15 +5,15 @@ import quizData from '../data/quizData';
 
 const QUIZ_TITLES = {
   'heat-load':           'עומס חום',
-  'intro':               'מבוא לוטרינריה',
-  'physical-exam':       'בדיקה גופנית',
+  'intro':               'מבוא',
+  'physical-exam':       'בדיקה פיסיקלית',
   'first-aid':           'עזרה ראשונה',
   'gdv':                 'היפוך קיבה',
   'poisoning':           'הרעלות',
   'fitness':             'כושר גופני',
   'infectious-diseases': 'מחלות זיהומיות',
-  'reproductive-system': 'מערכת הרבייה',
-  'spirocerca':          'ספירוצרקה',
+  'reproductive-system': 'מערכת המין',
+  'spirocerca':          'ספירוצרקה לופי',
 };
 
 export default function QuizPage() {

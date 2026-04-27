@@ -197,11 +197,15 @@ export default function Quiz100({ questions: QUESTIONS, quizTitle = 'בוחן ה
 
       if (!hasSubmitted.current) {
         hasSubmitted.current = true;
+        const questionAnswers = {};
+        QUESTIONS.forEach((q) => {
+          const ans = merged[q.id];
+          questionAnswers[`Q${q.id}`] = ans?.correct ? 1 : 0;
+        });
         sendToSheets({
-          score,
-          total: QUESTIONS.length,
-          quizTitle,
-          date: new Date().toISOString(),
+          Quiz_Name: quizTitle,
+          Final_Score: score,
+          ...questionAnswers,
         });
       }
 
