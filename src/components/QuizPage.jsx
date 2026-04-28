@@ -4,16 +4,13 @@ import Quiz100 from './Quiz100';
 import quizData from '../data/quizData';
 
 const QUIZ_TITLES = {
-  'heat-load':           'עומס חום',
-  'intro':               'מבוא',
-  'physical-exam':       'בדיקה פיסיקלית',
-  'first-aid':           'עזרה ראשונה',
-  'gdv':                 'היפוך קיבה',
-  'poisoning':           'הרעלות',
-  'fitness':             'כושר גופני',
-  'infectious-diseases': 'מחלות זיהומיות',
-  'reproductive-system': 'מערכת המין',
-  'spirocerca':          'ספירוצרקה לופי',
+  'reproductive-system':  'מערכת המין',
+  'infectious-diseases':  'מחלות מדבקות וספירוצרקה לופי',
+  'fitness':              'כושר גופני',
+  'poisoning':            'הרעלות',
+  'gdv':                  'היפוך קיבה',
+  'physical-exam':        'בדיקה פיסיקלית ועזרה ראשונה',
+  'heat-load':            'עומס חום',
 };
 
 export default function QuizPage() {
