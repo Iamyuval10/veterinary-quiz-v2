@@ -5,11 +5,11 @@ import quizData from '../data/quizData';
 
 const QUIZ_TITLES = {
   'reproductive-system':  'מערכת המין',
-  'infectious-diseases':  'מחלות מדבקות וספירוצרקה לופי',
+  'infectious-diseases':  'מחלות מדבקות',
   'fitness':              'כושר גופני',
   'poisoning':            'הרעלות',
   'gdv':                  'היפוך קיבה',
-  'physical-exam':        'בדיקה פיסיקלית ועזרה ראשונה',
+  'physical-exam':        'בדיקה פיסיקלית',
   'heat-load':            'עומס חום',
 };
 
