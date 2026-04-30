@@ -58,7 +58,7 @@ const IconX = () => (
 );
 
 // ─── Main Component ───────────────────────────────────────────────────────────
-export default function Quiz100({ questions: QUESTIONS, quizTitle = 'בוחן הכשרה' }) {
+export default function Quiz100({ questions: QUESTIONS, quizTitle = 'בוחן הכשרה', skipSheets = false }) {
   // Screen state
   const [screen, setScreen] = useState('intro');
   const [agreedConfidentiality, setAgreedConfidentiality] = useState(false);
@@ -195,7 +195,7 @@ export default function Quiz100({ questions: QUESTIONS, quizTitle = 'בוחן ה
       setAllAnswers(merged);
       const score = calcScore(merged);
 
-      if (!hasSubmitted.current) {
+      if (!hasSubmitted.current && !skipSheets) {
         hasSubmitted.current = true;
         const questionAnswers = {};
         QUESTIONS.forEach((q) => {

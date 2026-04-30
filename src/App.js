@@ -1,12 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import QuizPage from './components/QuizPage';
+import DemoQuizPage from './components/DemoQuizPage';
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/quiz/:quizId" element={<QuizPage />} />
+        <Route path="/demo-quiz" element={<DemoQuizPage />} />
         <Route
           path="*"
           element={
