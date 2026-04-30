@@ -7,8 +7,8 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/quiz/demo-quiz" element={<DemoQuizPage />} />
         <Route path="/quiz/:quizId" element={<QuizPage />} />
-        <Route path="/demo-quiz" element={<DemoQuizPage />} />
         <Route
           path="*"
           element={
