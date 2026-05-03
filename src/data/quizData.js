@@ -173,7 +173,7 @@ const quizData = {
     },
   ],
 
-  'physical-fitness': [
+  'fitness': [
     {
       id: 1,
       text: 'כושר גופני - סמן את ההיגד הנכון:',
