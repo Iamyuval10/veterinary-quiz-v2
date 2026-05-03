@@ -227,6 +227,7 @@ export default function Quiz100({ questions: QUESTIONS, quizTitle = 'בוחן ה
       setCurrentIndex((i) => i + 1);
       setSelectedOption(null);
       setAnswerState(null);
+      setTimeLeft(QUESTION_TIME);
     }
   };
 
@@ -508,14 +509,14 @@ export default function Quiz100({ questions: QUESTIONS, quizTitle = 'בוחן ה
                   </button>
                 )}
                 <div className="quiz__options">
-                  {shuffledOptions.map(([key, text]) => (
+                  {shuffledOptions.map(([key, text], index) => (
                     <button
                       key={key}
                       className={getOptionClass(key)}
                       onClick={() => handleSelectOption(key)}
                       disabled={answerState !== null}
                     >
-                      <span className="option__letter">{key}</span>
+                      <span className="option__letter">{String.fromCharCode(65 + index)}</span>
                       <span className="option__text">{text}</span>
                       {getOptionIcon(key)}
                     </button>
@@ -552,7 +553,7 @@ export default function Quiz100({ questions: QUESTIONS, quizTitle = 'בוחן ה
                 <p style={{ margin: 0, lineHeight: 1.7, textAlign: 'right', direction: 'rtl', fontSize: '15px' }}>
                   בעמוד הבא יוצג ציונך הסופי.
                   <br />
-                  בעמוד זה בלבד נדרש לצלם מסך ולהעביר לגורם הרלוונטי.
+                  בעמוד זה בלבד נדרש לצלם מסך ולהעביר למפקד הקורס.
                 </p>
               </div>
               <button className="btn btn--green btn--full" onClick={() => setScreen('results')}>
