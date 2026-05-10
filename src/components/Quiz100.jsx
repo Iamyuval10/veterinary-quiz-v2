@@ -457,7 +457,6 @@ export default function Quiz100({ questions: QUESTIONS, quizTitle = 'בוחן ה
                   </div>
                 </div>
                 <div className="quiz__question-card">
-                  <span className="quiz__question-badge">{questionNumberLabel}</span>
                   <p className="quiz__question-text">{currentQuestion.text}</p>
                 </div>
                 <img
@@ -493,7 +492,6 @@ export default function Quiz100({ questions: QUESTIONS, quizTitle = 'בוחן ה
                   </div>
                 </div>
                 <div className="quiz__question-card">
-                  <span className="quiz__question-badge">{questionNumberLabel}</span>
                   <p className="quiz__question-text">{currentQuestion.text}</p>
                 </div>
                 {currentQuestion.hasImage && answerState === null && (
