@@ -7,6 +7,7 @@ const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyrgEEb4ouogTLLyHYHl
 
 async function sendToSheets(payload) {
   console.log("Trying to send to URL:", SHEETS_URL);
+  console.log("Payload being sent to Sheets:", JSON.stringify(payload, null, 2));
   try {
     await fetch(SHEETS_URL, {
       method: 'POST',
